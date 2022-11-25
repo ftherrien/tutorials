@@ -1,0 +1,127 @@
+from pylada.vasp.relax import Relax
+from pylada.crystal import read
+from pylada.vasp.specie import U
+from pylada.vasp import Extract
+from subprocess import Popen, PIPE
+import os
+
+def get_jobs():
+    names = []
+    jobs= Popen(['squeue', '-u', 'felixt'], stdout=PIPE, encoding='utf-8').communicate()[0].split('\n')
+    for job in jobs[1:-1]:
+        info = Popen(["scontrol", "show", "jobid", "-dd", job.split()[0]], stdout=PIPE, encoding='utf-8').communicate()[0].split('\n')
+        names.append(info[0].split("JobName=")[1])
+    return names
+
+
+def closest_factor(n):
+    i = int(n**0.5)
+    while n%i != 0:
+        i-=1
+    return i
+
+############### setting up the functional
+vasp=Relax()
+
+# Program and file location
+vasp.program = '/scinet/niagara/software/commercial/vasp-6.1.2/bin/vasp_std'
+vasp.has_nlep = False
+
+pseudoDir = '/scinet/niagara/software/commercial/vasp-6.1.2/potpaw_PBE/'
+
+# Pseudopotentials to use
+vasp.add_specie = "C", pseudoDir + "/C"
+vasp.add_specie = "H", pseudoDir + "/H"
+vasp.add_specie = "F", pseudoDir + "/F" # (F_s) No ultrasoft with spinorbit
+vasp.add_specie = "Ir", pseudoDir + "/Ir" #, U("dudarev", "d", 3.0)
+vasp.add_specie = "N", pseudoDir + "/N" # (N_s) No ultrasoft with spinorbit
+vasp.add_specie = "O", pseudoDir + "/O" # (O_s) No ultrasoft with spinorbit
+
+vasp.add_specie = "Cl", pseudoDir + "/Cl" # 
+vasp.add_specie = "Si", pseudoDir + "/Si" # 
+vasp.add_specie = "S", pseudoDir + "/S" # 
+vasp.add_specie = "B", pseudoDir + "/B" # 
+vasp.add_specie = "P", pseudoDir + "/P" # 
+
+# INCAR paramters
+vasp.prec       = "accurate"
+vasp.ediff      = 1.0e-5
+vasp.ediffg     = 1.0e-3
+vasp.convergence = 1.0e-3
+#vasp.minrelsteps= 2
+vasp.lplane     = True
+vasp.addgrid    = True
+vasp.npar       = 8
+vasp.ismear     = 0
+vasp.sigma      = 0.2
+vasp.isym       = 0
+vasp.kpoints    = "\n0\nAuto\n1"
+vasp.lorbit     = 10
+vasp.lcharg = False
+vasp.lwave = True
+vasp.lmaxmix = 4
+vasp.loptics = False
+vasp.lpead = False
+vasp.algo = "Fast"
+
+# vasp.add_keyword("IVDW", 11)
+# vasp.add_keyword("NUPDOWN", 2)
+
+vasp.maxiter = 20
+vasp.maxcalls = 20
+vasp.keep_steps = True
+
+vasp.relaxation = "ionic"
+vasp.nsw = 200
+vasp.ispin = 1
+
+############### setting up the structures
+
+from pylada.crystal import read
+from glob import iglob
+
+structures={}
+
+jobs = get_jobs()
+for poscar in iglob('POSCAR_*'): # <- This is where you set the input files location
+
+    s=read.poscar(poscar)
+    s.name=''
+    name='output/'+poscar[poscar.rindex('_')+1:] # <- This is where you set the output file location
+    if name not in jobs: # Making sure it is not already running
+        structures[name]=s
+        # for a in s:
+        #     if a.type=='Ir':
+        #         a.spin = 0.6
+        #     else:
+        #         a.spin = 0.0
+  
+############### setting up the jobfolder
+
+from pylada.jobfolder import JobFolder
+from copy import deepcopy
+
+# Job dictionary.
+jobfolder = JobFolder()
+
+# loop over material-lattice pairs.
+for name in structures:
+
+    # job folder for this lattice     
+    print(name)
+    job = jobfolder / name 
+    vasp_individual = deepcopy(vasp)
+
+    # Setting structure specific INCAR paramters
+    vasp_individual.npar = closest_factor(max(1,len(structures[name])//40)*40)
+    # magmom=''
+    # for atom in structures[name]:
+    #     magmom=magmom+'0 0 %s  ' %(atom.spin)
+    #vasp_individual.magmom=magmom
+    
+    job.functional = vasp_individual
+    job.params["structure"] = structures[name]
+
+%load_ext pylada
+%savefolders relax.pickle jobfolder
+# %launch scattered --account=rrg-ovoznyy --walltime=24:00:00 --ppn=40 --queue=compute

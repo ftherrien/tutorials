@@ -1,0 +1,61 @@
+vasp_has_nlep = False
+
+################## QDEL definition ################
+
+mpirun_exe = "srun -n {n} {program}"
+
+qdel_exe = "scancel"
+
+qsub_exe = "sbatch"
+
+################### QSTAT definition ##############
+def ipython_qstat(self, arg):
+
+  """ Prints jobs of current user. """
+  from subprocess import Popen, PIPE
+  from IPython.utils.text import SList
+  from sys import version_info
+  # get user jobs ids
+  if version_info[0] >= 3:
+      jobs   = Popen(['squeue', '-u', 'felixt'], stdout=PIPE, encoding='utf-8')   \
+                .communicate()[0].split('\n')
+  else:
+      jobs   = Popen(['squeue', '-u', 'felixt'], stdout=PIPE)   \
+                .communicate()[0].split('\n')
+
+  names  = [lines.strip().split()[3] for lines in jobs[1:-1]]
+
+  mpps   = [lines.strip().split()[0] for lines in jobs[1:-1]]
+
+  states = [lines.strip().split()[4] for lines in jobs[1:-1]]
+
+  ids    = [lines.strip().split()[0] for lines in jobs[1:-1]]
+
+  return SList([ "{0:>10} {1:>4} {2:>3} -- {3}".format(id, mpp, state, name)   \
+                 for id, mpp, state, name in zip(ids, mpps, states, names)])
+
+
+##################### PBSSCRIPT #####################
+
+pbs_string =  '''#!/bin/bash -x
+#SBATCH --account={account}
+#SBATCH --nodes={nnodes}
+#SBATCH --ntasks-per-node={ppn}
+#SBATCH --exclusive
+#SBATCH --export=ALL
+#SBATCH --time={walltime}
+#SBATCH -o {out}
+#SBATCH -e {err}
+#SBATCH --job-name={name}
+#SBATCH -p {queue}
+
+# Go to the directoy from which our job was launched
+cd {directory}
+
+vaspmod
+p3env
+
+{header}
+python {scriptcommand}
+{footer}
+'''
