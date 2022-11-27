@@ -52,8 +52,10 @@ pbs_string =  '''#!/bin/bash -x
 # Go to the directoy from which our job was launched
 cd {directory}
 
-vaspmod
-p3env
+module use /scinet/niagara/software/commercial/modules
+module load intel/2020u4 intelmpi/2020u4 hdf5/1.10.7 vasp
+module load python cmake
+source ~/pylada_env/bin/activate
 
 {header}
 python {scriptcommand}

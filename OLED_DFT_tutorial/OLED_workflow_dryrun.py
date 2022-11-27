@@ -22,6 +22,7 @@ class CustomChain(object):
     def __call__(self, structure, outdir=None, **kwargs ):
 
         from copy import deepcopy
+        import sys
         from os import getcwd, makedirs
         from os.path import join, isdir, isfile
         from pylada.misc import RelativePath
@@ -29,6 +30,8 @@ class CustomChain(object):
         from pylada.vasp.extract import Extract
         from pylada.vasp import Vasp
         from pylada.vasp.relax import Relax
+        print(getcwd())
+        print(sys.path)
         from stretch import stretch
         from interp import interp
         from extract_images import read_procar
@@ -53,7 +56,7 @@ class CustomChain(object):
             except IndexError:
                 entry = outdir.split("/")[-1].lower()
             
-            mol = Chem.MolFromMolFile("./dry_run_mols/"+entry+".mol", sanitize = False, removeHs = False)
+            mol = Chem.MolFromMolFile("./mols/"+entry+".mol", sanitize = False, removeHs = False)
             
             # atom = mol.GetAtomWithIdx(idx)
 
@@ -348,7 +351,119 @@ class CustomChain(object):
                 timing[self.names[4]] = time.time() - t
             
             pickle.dump(timing, open(outdir + "/timing.pkl","wb"))
+
+            ############ Part 5.2: Relax Barrier ###############
+
+            print("BOND INDICES", bond_indices)
+
+            t = time.time()
             
+            new_barriers = []
+
+            print("CALCS:", calcs, file=f)
+
+            # for ii, calc in enumerate(calcs):
+            ii = minidx
+            calc = calcs[ii]
+
+            i = int(list(calc.files())[0].split("/")[-3])
+            calcdir = outdir + "/" + self.names[4] + "/ARPESS/%d"%i
+            makedirs(calcdir, exist_ok = True)
+            A = reposition(calc.structure, structure)
+            write.poscar(A, calcdir + "/POSCAR_init")
+            bond_i, bond_j = bond_indices[ii]
+
+            if not isfile(calcdir + "/POSCAR_final"):
+
+                if not isdir(calcdir + "/asedir"):
+                    atoms = aseread(calcdir + "/POSCAR_init")
+                else:
+                    atoms = aseread(calcdir + "/asedir/POSCAR")
+                
+                liste=[[bond_i,bond_j,1.0]]
+                
+                magmom = np.zeros(len(atoms))
+                magmom[0] = 0.6
+                
+                initial_value = np.linalg.norm(A[bond_i].pos - A[bond_j].pos)
+                
+                #cc=stretchcombo(initial_value, liste, atoms)
+                
+                cc=FixBondLengths(bond_indices)
+                
+                print(cc.__dir__())
+                print(cc, type(cc))
+                print(initial_value, liste, atoms)
+                # print(cc.return_adjusted_prositions())
+                
+                # atoms.set_positions(cc.return_adjusted_prositions())
+                
+                atoms.set_constraint([cc])
+
+                print("AVANT", file=f)
+                calc = vasp_calculator.Vasp(command='srun vasp_std',
+                                            xc = 'PBE',
+                                            # ivdw=11,
+                                            kpts  = (1,1,1),
+                                            npar = 5,
+                                            istart = False,
+                                            gamma = True,
+                                            ismear = 0,
+                                            nelm = 250,
+                                            nupdown = 2,
+                                            algo = 'Fast',
+                                            sigma = 0.2,
+                                            ibrion = -1,
+                                            ediffg = 0.001,
+                                            ediff = 1e-5,
+                                            prec = 'Accurate',
+                                            lcharg = False,
+                                            lwave = False,
+                                            lorbit = 10,
+                                            nsw = 0,
+                                            lreal = False,
+                                            ispin = 2,
+                                            lmaxmix = 4,
+                                            magmom = magmom,
+                                            label="image",
+                                            directory=calcdir + "/asedir")
+
+                print("APRES", file=f)
+
+                atoms.set_calculator(calc)
+                
+                dyn = BFGS(atoms, restart=calcdir + "/asedir/restart.pkl")
+                dyn.run(fmax=0.03)
+            
+                new_barriers.append(float(atoms.get_potential_energy())-ene_init)
+            
+                atoms.write(calcdir + "/POSCAR_final")
+            
+                print("ENERGY:", atoms.get_potential_energy(), file = f)
+            
+            else:
+                asecalc = Extract(calcdir + "/asedir")
+                new_barriers.append(float(asecalc.total_energy)-ene_init)
+            
+            print("BARRIERS", barriers, file=f)
+            if len(barriers) != 0:
+                #with open(outdir + "/" + self.names[4] + "/BARRIER", "a") as f:
+                print("New Barriers (eV)", file=f)
+                for i,b in enumerate(new_barriers):
+                    print(i, b, file=f)
+                    
+                print(file=f)
+                new_minidx = np.argmin(new_barriers)
+                print("New Min barrier:", new_barriers[new_minidx], file=f)
+                
+                if minidx != new_minidx:
+                    print("Not the same barrier!", file=f)
+            
+            
+            if "ARPESS" not in timing:
+                timing["ARPESS"] = time.time() - t
+            
+            pickle.dump(timing, open(outdir + "/timing.pkl","wb"))
 
            ############ Part 5.3: Relax Barrier 1 bond only ###############
 
@@ -428,7 +543,9 @@ class CustomChain(object):
                 atoms.write(calcdir + "/POSCAR_final")
             
                 print("ENERGY:", atoms.get_potential_energy(), file = f)
-            
+
+                print("CHANGE IN LENGTH:", (np.array(initial_values) - np.array(final_values))/np.array(initial_values), file=f)
+                
             else:
                 asecalc = Extract(calcdir + "/asedir")
                 new_barriers.append(float(asecalc.total_energy)-ene_init)
@@ -451,7 +568,6 @@ class CustomChain(object):
                 if minidx != new_minidx:
                     print("Not the same barrier!", file=f)
             
-            print("CHANGE IN LENGTH:", (np.array(initial_values) - np.array(final_values))/np.array(initial_values), file=f)
             
             if "SINGLE_BOND" not in timing:
                 timing["SINGLE_BOND"] = time.time() - t

@@ -2,7 +2,7 @@
 %“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
 1 0 obj
 <<
-/F1 2 0 R /F2 3 0 R /F3 4 0 R /F4 5 0 R /F5 6 0 R /F6 8 0 R
+/F1 2 0 R /F2 3 0 R /F3 4 0 R /F4 5 0 R /F5 6 0 R /F6 9 0 R
 >>
 endobj
 2 0 obj
@@ -42,17 +42,17 @@ endobj
 endobj
 8 0 obj
 <<
-/BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding /Name /F6 /Subtype /Type1 /Type /Font
->>
-endobj
-9 0 obj
-<<
 /Contents 25 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 23 0 R /Resources <<
 /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
 >> /Rotate 0 /Trans <<
 
 >> 
   /Type /Page
+>>
+endobj
+9 0 obj
+<<
+/BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding /Name /F6 /Subtype /Type1 /Type /Font
 >>
 endobj
 10 0 obj
@@ -72,7 +72,7 @@ endobj
 endobj
 12 0 obj
 <<
-/Author () /CreationDate (D:20221125134004+05'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20221125134004+05'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
+/Author () /CreationDate (D:20221127142137+05'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20221127142137+05'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
   /Subject (\(unspecified\)) /Title (A Simple Guide to Using Pylada) /Trapped /False
 >>
 endobj
@@ -88,54 +88,54 @@ endobj
 endobj
 15 0 obj
 <<
-/Count 7 /Dest [ 9 0 R /XYZ 57.02362 765.0236 0 ] /First 16 0 R /Last 22 0 R /Parent 13 0 R /Prev 14 0 R 
+/Count 7 /Dest [ 8 0 R /XYZ 57.02362 594.8236 0 ] /First 16 0 R /Last 22 0 R /Parent 13 0 R /Prev 14 0 R 
   /Title (Usage)
 >>
 endobj
 16 0 obj
 <<
-/Count 4 /Dest [ 9 0 R /XYZ 57.02362 702.0236 0 ] /First 17 0 R /Last 20 0 R /Next 21 0 R /Parent 15 0 R 
+/Count 4 /Dest [ 8 0 R /XYZ 57.02362 531.8236 0 ] /First 17 0 R /Last 20 0 R /Next 21 0 R /Parent 15 0 R 
   /Title (Submission script)
 >>
 endobj
 17 0 obj
 <<
-/Dest [ 9 0 R /XYZ 57.02362 654.0236 0 ] /Next 18 0 R /Parent 16 0 R /Title (Setting VASP files)
+/Dest [ 8 0 R /XYZ 57.02362 483.8236 0 ] /Next 18 0 R /Parent 16 0 R /Title (Setting VASP files)
 >>
 endobj
 18 0 obj
 <<
-/Dest [ 9 0 R /XYZ 57.02362 527.8236 0 ] /Next 19 0 R /Parent 16 0 R /Prev 17 0 R /Title (Setting pseudopotentials)
+/Dest [ 8 0 R /XYZ 57.02362 357.6236 0 ] /Next 19 0 R /Parent 16 0 R /Prev 17 0 R /Title (Setting pseudopotentials)
 >>
 endobj
 19 0 obj
 <<
-/Dest [ 9 0 R /XYZ 57.02362 425.6236 0 ] /Next 20 0 R /Parent 16 0 R /Prev 18 0 R /Title (Setting INCAR parameters)
+/Dest [ 8 0 R /XYZ 57.02362 255.4236 0 ] /Next 20 0 R /Parent 16 0 R /Prev 18 0 R /Title (Setting INCAR parameters)
 >>
 endobj
 20 0 obj
 <<
-/Dest [ 9 0 R /XYZ 57.02362 139.8236 0 ] /Parent 16 0 R /Prev 19 0 R /Title (Setting the input and output directories)
+/Dest [ 10 0 R /XYZ 57.02362 662.6236 0 ] /Parent 16 0 R /Prev 19 0 R /Title (Setting the input and output directories)
 >>
 endobj
 21 0 obj
 <<
-/Dest [ 10 0 R /XYZ 57.02362 608.4279 0 ] /Next 22 0 R /Parent 15 0 R /Prev 16 0 R /Title (Launching jobs)
+/Dest [ 10 0 R /XYZ 57.02362 453.0279 0 ] /Next 22 0 R /Parent 15 0 R /Prev 16 0 R /Title (Launching jobs)
 >>
 endobj
 22 0 obj
 <<
-/Dest [ 10 0 R /XYZ 57.02362 391.1203 0 ] /Parent 15 0 R /Prev 21 0 R /Title (Extracting Data)
+/Dest [ 10 0 R /XYZ 57.02362 257.9375 0 ] /Parent 15 0 R /Prev 21 0 R /Title (Extracting Data)
 >>
 endobj
 23 0 obj
 <<
-/Count 3 /Kids [ 7 0 R 9 0 R 10 0 R ] /Type /Pages
+/Count 3 /Kids [ 7 0 R 8 0 R 10 0 R ] /Type /Pages
 >>
 endobj
 24 0 obj
 <<
-/Length 7182
+/Length 7421
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
@@ -166,16 +166,7 @@ BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (To install Pylada on Niagara \(or any cc comp
 Q
 Q
 q
-1 0 0 1 57.02362 636.0236 cm
-Q
-q
-1 0 0 1 57.02362 574.8236 cm
-q
-0 0 0 rg
-BT /F1 10 Tf 12 TL ET
-BT 1 0 0 1 0 2 Tm  T* ET
-q
-1 0 0 1 20 0 cm
+1 0 0 1 57.02362 584.8236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -185,41 +176,25 @@ q
 .662745 .662745 .662745 RG
 .5 w
 .941176 .972549 1 rg
-n -6 -6 460.0283 60 re B*
+n -6 -6 480.0283 48 re B*
 Q
 q
-.533333 .533333 .533333 rg
-BT 1 0 0 1 0 38 Tm /F3 10 Tf 12 TL (module load python cmake intel/2020u4) Tj T* (pip install --user --upgrade pip) Tj T* (pip install --user git+https://github.com/pylada/pylada-light) Tj T*  T* ET
+0 0 0 rg
+BT 1 0 0 1 0 26 Tm /F3 10 Tf 12 TL (module load python cmake intel/2020u4) Tj T* (pip install --user --upgrade pip) Tj T* (pip install --user git+https://github.com/pylada/pylada-light@few_fixes) Tj T* ET
 Q
 Q
-Q
-Q
-Q
-q
 Q
 Q
 Q
 q
-1 0 0 1 57.02362 574.8236 cm
-Q
-q
-1 0 0 1 57.02362 556.8236 cm
+1 0 0 1 57.02362 564.8236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (I like to have it in a separate virtual environment:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 550.8236 cm
-Q
-q
-1 0 0 1 57.02362 465.6236 cm
-q
-0 0 0 rg
-BT /F1 10 Tf 12 TL ET
-BT 1 0 0 1 0 2 Tm  T* ET
-q
-1 0 0 1 20 0 cm
+1 0 0 1 57.02362 483.6236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -229,45 +204,29 @@ q
 .662745 .662745 .662745 RG
 .5 w
 .941176 .972549 1 rg
-n -6 -6 460.0283 84 re B*
+n -6 -6 480.0283 72 re B*
 Q
-q
-.533333 .533333 .533333 rg
-BT 1 0 0 1 0 62 Tm /F3 10 Tf 12 TL (module load python cmake intel/2020u4) Tj T* (python -m venv pylada_env) Tj T* (source pylada_env/bin/activate) Tj T* (pip install --upgrade pip) Tj T* (pip install git+https://github.com/pylada/pylada-light) Tj T*  T* ET
-Q
-Q
-Q
-Q
-Q
-q
-Q
-Q
-Q
-q
-1 0 0 1 57.02362 465.6236 cm
-Q
-q
-1 0 0 1 57.02362 423.6236 cm
-q
-BT 1 0 0 1 0 26 Tm .577917 Tw 12 TL /F1 10 Tf 0 0 0 rg (This should take a little while, because it needs to compile from source. After that you need to copy the file) Tj T* 0 Tw .27135 Tw /F3 10 Tf (.pylada) Tj /F1 10 Tf ( in your home directory \(this file maybe hidden, but it is in this folder!\). At line 20 of that file change) Tj T* 0 Tw (my username for yours) Tj T* ET
-Q
-Q
-q
-1 0 0 1 57.02362 417.6236 cm
-Q
-q
-1 0 0 1 57.02362 400.3584 cm
 q
 0 0 0 rg
-BT /F1 10 Tf 12 TL ET
-BT 1 0 0 1 0 2 Tm  T* ET
+BT 1 0 0 1 0 50 Tm /F3 10 Tf 12 TL (module load python cmake intel/2020u4) Tj T* (python -m venv pylada_env) Tj T* (source pylada_env/bin/activate) Tj T* (pip install --upgrade pip) Tj T* (pip install git+https://github.com/pylada/pylada-light@few_fixes) Tj T* ET
+Q
+Q
+Q
+Q
+Q
 q
-1 0 0 1 20 0 cm
+1 0 0 1 57.02362 439.6236 cm
+q
+BT 1 0 0 1 0 26 Tm .134417 Tw 12 TL /F1 10 Tf 0 0 0 rg (This should take a little while, because it needs to compile from source. Make sure that python is 3.9 or less.) Tj T* 0 Tw .511288 Tw (After that you need to copy the file ) Tj /F3 10 Tf (.pylada) Tj /F1 10 Tf ( in your home directory \(this file may be hidden, but it is in this) Tj T* 0 Tw (folder!\). At line 20 of that file change my username for yours) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 413.6097 cm
 q
 q
-.685128 0 0 .685128 0 0 cm
+.714837 0 0 .714837 0 0 cm
 q
-1 0 0 1 6.6 9.633233 cm
+1 0 0 1 6.6 9.232873 cm
 q
 .662745 .662745 .662745 RG
 .5 w
@@ -342,30 +301,14 @@ Q
 Q
 Q
 q
-Q
-Q
-Q
-q
-1 0 0 1 57.02362 400.3584 cm
-Q
-q
-1 0 0 1 57.02362 370.3584 cm
+1 0 0 1 57.02362 381.6097 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .520439 Tw (Lines 40-61 contain the slurm script that Pylada will use to launch jobs. Make sure to change L55-56 to the) Tj T* 0 Tw (correct modules and environment that you are using if you are on a different computer.) Tj T* ET
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .520439 Tw (Lines 40-61 contain the slurm script that Pylada will use to launch jobs. Make sure to change L55-58 to the) Tj T* 0 Tw (correct modules and environment that you are using if you are on a different computer.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 364.3584 cm
-Q
-q
-1 0 0 1 57.02362 63.15839 cm
-q
-0 0 0 rg
-BT /F1 10 Tf 12 TL ET
-BT 1 0 0 1 0 2 Tm  T* ET
-q
-1 0 0 1 20 0 cm
+1 0 0 1 57.02362 72.40973 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -375,7 +318,7 @@ q
 .662745 .662745 .662745 RG
 .5 w
 .941176 .972549 1 rg
-n -6 -6 460.0283 300 re B*
+n -6 -6 480.0283 300 re B*
 Q
 q
 .941176 .972549 1 rg
@@ -405,7 +348,11 @@ n 0 156 96 12 re f*
 .941176 .972549 1 rg
 n 0 144 150 12 re f*
 .941176 .972549 1 rg
-n 0 132 108 12 re f*
+n 0 132 120 12 re f*
+.941176 .972549 1 rg
+n 120 132 6 12 re f*
+.941176 .972549 1 rg
+n 126 132 204 12 re f*
 .941176 .972549 1 rg
 n 0 120 0 12 re f*
 .941176 .972549 1 rg
@@ -415,81 +362,160 @@ n 0 96 84 12 re f*
 .941176 .972549 1 rg
 n 0 84 0 12 re f*
 .941176 .972549 1 rg
-n 0 72 288 12 re f*
+n 0 72 120 12 re f*
 .941176 .972549 1 rg
-n 0 60 282 12 re f*
+n 120 72 6 12 re f*
 .941176 .972549 1 rg
-n 0 48 0 12 re f*
+n 126 72 186 12 re f*
 .941176 .972549 1 rg
-n 0 36 48 12 re f*
+n 0 60 354 12 re f*
 .941176 .972549 1 rg
-n 0 24 132 12 re f*
+n 354 60 6 12 re f*
 .941176 .972549 1 rg
-n 0 12 48 12 re f*
+n 360 60 60 12 re f*
 .941176 .972549 1 rg
-n 0 0 18 12 re f*
-BT 1 0 0 1 0 278 Tm 12 TL /F5 10 Tf .25098 .501961 .501961 rg (##################### PBSSCRIPT #####################) Tj T* /F3 10 Tf 0 0 0 rg  T* .098039 .090196 .486275 rg (pbs_string) Tj 0 0 0 rg ( ) Tj .4 .4 .4 rg (=) Tj 0 0 0 rg (  ) Tj .729412 .129412 .129412 rg ('''#!/bin/bash -x) Tj T* (#SBATCH --account={account}) Tj T* (#SBATCH --nodes={nnodes}) Tj T* (#SBATCH --ntasks-per-node={ppn}) Tj T* (#SBATCH --exclusive) Tj T* (#SBATCH --export=ALL) Tj T* (#SBATCH --time={walltime}) Tj T* (#SBATCH -o {out}) Tj T* (#SBATCH -e {err}) Tj T* (#SBATCH --job-name={name}) Tj T* (#SBATCH -p {queue}) Tj T*  T* (# Go to the directoy from which our job was launched) Tj T* (cd {directory}) Tj T*  T* (module load python cmake intel/2020u4 #This line) Tj T* (source ~/pylada_env/bin/activate #and this line) Tj T*  T* ({header}) Tj T* (python {scriptcommand}) Tj T* ({footer}) Tj T* (''') Tj T* ET
+n 0 48 354 12 re f*
+.941176 .972549 1 rg
+n 354 48 6 12 re f*
+.941176 .972549 1 rg
+n 360 48 60 12 re f*
+.941176 .972549 1 rg
+n 0 36 354 12 re f*
+.941176 .972549 1 rg
+n 354 36 6 12 re f*
+.941176 .972549 1 rg
+n 360 36 60 12 re f*
+.941176 .972549 1 rg
+n 0 24 354 12 re f*
+.941176 .972549 1 rg
+n 354 24 6 12 re f*
+.941176 .972549 1 rg
+n 360 24 60 12 re f*
+.941176 .972549 1 rg
+n 0 12 0 12 re f*
+.941176 .972549 1 rg
+n 0 0 48 12 re f*
+BT 1 0 0 1 0 278 Tm 12 TL /F5 10 Tf .25098 .501961 .501961 rg (##################### PBSSCRIPT #####################) Tj T* /F3 10 Tf 0 0 0 rg  T* .098039 .090196 .486275 rg (pbs_string) Tj 0 0 0 rg ( ) Tj .4 .4 .4 rg (=) Tj 0 0 0 rg (  ) Tj .729412 .129412 .129412 rg ('''#!/bin/bash -x) Tj T* (#SBATCH --account={account}) Tj T* (#SBATCH --nodes={nnodes}) Tj T* (#SBATCH --ntasks-per-node={ppn}) Tj T* (#SBATCH --exclusive) Tj T* (#SBATCH --export=ALL) Tj T* (#SBATCH --time={walltime}) Tj T* (#SBATCH -o {out}) Tj T* (#SBATCH -e {err}) Tj T* (#SBATCH --job-name={name}) Tj T* (#SBATCH -p {queue} #) Tj (<) Tj (- You may need to remove this line) Tj T*  T* (# Go to the directoy from which our job was launched) Tj T* (cd {directory}) Tj T*  T* (# source ~/.bashrc #) Tj (<) Tj (- You may need to add this line) Tj T* (module use /scinet/niagara/software/commercial/modules    #) Tj (<) Tj (-This line) Tj T* (module load intel/2020u4 intelmpi/2020u4 hdf5/1.10.7 vasp #) Tj (<) Tj (-This line) Tj T* (module load python cmake                                  #) Tj (<) Tj (-This line) Tj T* (source ~/pylada_env/bin/activate                          #) Tj (<) Tj (-This line) Tj T*  T* ({header}) Tj T* ET
 Q
 Q
 Q
 Q
-Q
-q
-Q
-Q
-Q
-q
-1 0 0 1 57.02362 63.15839 cm
 Q
  
 endstream
 endobj
 25 0 obj
 <<
-/Length 8851
+/Length 7887
 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
-1 0 0 1 57.02362 744.0236 cm
+1 0 0 1 57.02362 715.8236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 48 re B*
+Q
+q
+.941176 .972549 1 rg
+n 0 24 132 12 re f*
+.941176 .972549 1 rg
+n 0 12 48 12 re f*
+.941176 .972549 1 rg
+n 0 0 18 12 re f*
+BT 1 0 0 1 0 26 Tm 12 TL /F3 10 Tf .729412 .129412 .129412 rg (python {scriptcommand}) Tj T* ({footer}) Tj T* (''') Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 695.8236 cm
+Q
+q
+1 0 0 1 57.02362 612.8236 cm
+q
+1 .972549 .862745 rg
+n 0 83 481.2283 -83 re f*
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 6 57 Tm  T* ET
+q
+1 0 0 1 16 52 cm
+q
+.133333 .133333 .133333 rg
+BT 1 0 0 1 0 2.5 Tm /F2 12.5 Tf 15 TL (Note) Tj T* ET
+Q
+Q
+q
+1 0 0 1 16 16 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .738022 Tw (On some Compute Canada computers there are no partitions, you will need to remove line 35. You) Tj T* 0 Tw (may also have to manually source ~/.bashrc) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+.662745 .662745 .662745 RG
+.5 w
+n 0 83 m 481.2283 83 l S
+n 0 0 m 481.2283 0 l S
+n 0 0 m 0 83 l S
+n 481.2283 0 m 481.2283 83 l S
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 606.8236 cm
+Q
+q
+1 0 0 1 57.02362 573.8236 cm
 q
 BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf .133333 .133333 .133333 rg (Usage) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 714.0236 cm
+1 0 0 1 57.02362 543.8236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .648138 Tw (Pylada can be used for a lot of different things such as manipulating crystal structures and finding primitive) Tj T* 0 Tw (cells. Here I will show you how to use it to submit VASP jobs.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 684.0236 cm
+1 0 0 1 57.02362 513.8236 cm
 q
 BT 1 0 0 1 0 3 Tm 18 TL /F2 15 Tf .133333 .133333 .133333 rg (Submission script) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 666.0236 cm
+1 0 0 1 57.02362 495.8236 cm
 q
 BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (Let's go through ) Tj /F3 10 Tf (HT_relax_example.ipy) Tj /F1 10 Tf (.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 639.0236 cm
+1 0 0 1 57.02362 468.8236 cm
 q
 BT 1 0 0 1 0 2.5 Tm 15 TL /F2 12.5 Tf .133333 .133333 .133333 rg (Setting VASP files) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 621.0236 cm
+1 0 0 1 57.02362 450.8236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (At lines 26-30 you can set the location of the VASP executable and the pseudo-potentials:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 539.8236 cm
+1 0 0 1 57.02362 369.6236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -537,20 +563,20 @@ Q
 Q
 Q
 q
-1 0 0 1 57.02362 512.8236 cm
+1 0 0 1 57.02362 342.6236 cm
 q
 BT 1 0 0 1 0 2.5 Tm 15 TL /F2 12.5 Tf .133333 .133333 .133333 rg (Setting pseudopotentials) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 482.8236 cm
+1 0 0 1 57.02362 312.6236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .695702 Tw (The next few lines \(32-45\) set the pseudopotentials that you want to use for each element. This is useful if) Tj T* 0 Tw (you want to use ultrasoft PPs or if you want to use a version with d or f orbitals.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 437.6236 cm
+1 0 0 1 57.02362 267.4236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -610,20 +636,20 @@ Q
 Q
 Q
 q
-1 0 0 1 57.02362 410.6236 cm
+1 0 0 1 57.02362 240.4236 cm
 q
 BT 1 0 0 1 0 2.5 Tm 15 TL /F2 12.5 Tf .133333 .133333 .133333 rg (Setting INCAR parameters) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 392.6236 cm
+1 0 0 1 57.02362 222.4236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Lines 46-77 set the INCAR parameters. A few things to note:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 359.4236 cm
+1 0 0 1 57.02362 189.2236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -653,14 +679,14 @@ Q
 Q
 Q
 q
-1 0 0 1 57.02362 315.4236 cm
+1 0 0 1 57.02362 145.2236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 26 Tm /F1 10 Tf 12 TL 1.213731 Tw (If you are relaxing cell parameters \(which is not the case in this file, see below\), it is good to do multiple) Tj T* 0 Tw .825522 Tw (relaxations because as you change the cell shape your basis set does not. Pylada does that automatically) Tj T* 0 Tw (and this set the convergence between each relaxation step.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 282.2236 cm
+1 0 0 1 57.02362 112.0236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -690,13 +716,22 @@ Q
 Q
 Q
 q
-1 0 0 1 57.02362 250.2236 cm
+1 0 0 1 57.02362 80.02362 cm
 q
 BT 1 0 0 1 0 14 Tm .00402 Tw 12 TL /F1 10 Tf 0 0 0 rg (This is where you set the type of relaxation \(ISIF\) the options are ) Tj /F3 10 Tf (static) Tj /F1 10 Tf (, ) Tj /F3 10 Tf (volume) Tj /F1 10 Tf (, ) Tj /F3 10 Tf (cellshape) Tj /F1 10 Tf ( and ) Tj /F3 10 Tf (ionic) Tj /F1 10 Tf (.) Tj T* 0 Tw (If you wanted to relax the volume shape and atoms you would do.) Tj T* ET
 Q
 Q
+ 
+endstream
+endobj
+26 0 obj
+<<
+/Length 9392
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
-1 0 0 1 57.02362 217.0236 cm
+1 0 0 1 57.02362 739.8236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -726,13 +761,13 @@ Q
 Q
 Q
 q
-1 0 0 1 57.02362 185.0236 cm
+1 0 0 1 57.02362 707.8236 cm
 q
-BT 1 0 0 1 0 14 Tm 2.586962 Tw 12 TL /F1 10 Tf 0 0 0 rg (Most INCAR parameters can be set directly e.g. ) Tj /F3 10 Tf (NSW) Tj /F1 10 Tf ( is ) Tj /F3 10 Tf (vasp.nsw) Tj /F1 10 Tf (. If you are using a less common) Tj T* 0 Tw (parameters sometimes you need to ) Tj /F6 10 Tf (manually) Tj /F1 10 Tf ( add it using this command :) Tj T* ET
+BT 1 0 0 1 0 14 Tm 2.586962 Tw 12 TL /F1 10 Tf 0 0 0 rg (Most INCAR parameters can be set directly e.g. ) Tj /F3 10 Tf (NSW) Tj /F1 10 Tf ( is ) Tj /F3 10 Tf (vasp.nsw) Tj /F1 10 Tf (. If you are using a less common) Tj T* 0 Tw (parameter sometimes you need to ) Tj /F6 10 Tf (manually) Tj /F1 10 Tf ( add it using this command :) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 151.8236 cm
+1 0 0 1 57.02362 674.6236 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -768,29 +803,20 @@ Q
 Q
 Q
 q
-1 0 0 1 57.02362 124.8236 cm
+1 0 0 1 57.02362 647.6236 cm
 q
 BT 1 0 0 1 0 2.5 Tm 15 TL /F2 12.5 Tf .133333 .133333 .133333 rg (Setting the input and output directories) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 94.82362 cm
+1 0 0 1 57.02362 617.6236 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL -0.006439 Tw (Lines 79-98 go through input files and add them to a list of structures. This is where I set the input and output) Tj T* 0 Tw (directories and their naming conventions.) Tj T* ET
 Q
 Q
- 
-endstream
-endobj
-26 0 obj
-<<
-/Length 8223
->>
-stream
-1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
-1 0 0 1 57.02362 664.4279 cm
+1 0 0 1 57.02362 509.0279 cm
 q
 q
 .755223 0 0 .755223 0 0 cm
@@ -932,25 +958,25 @@ Q
 Q
 Q
 q
-1 0 0 1 57.02362 620.4279 cm
+1 0 0 1 57.02362 465.0279 cm
 q
-BT 1 0 0 1 0 26 Tm .147808 Tw 12 TL /F1 10 Tf 0 0 0 rg (The rest of the lines just add the structures to the ) Tj /F3 10 Tf (JobFolder\(\)) Tj /F1 10 Tf ( object which is the instance that will launch) Tj T* 0 Tw 1.731147 Tw (the jobs. This is where you could set ) Tj /F3 10 Tf (INCAR) Tj /F1 10 Tf ( parameters that are structure dependent like the magnetic) Tj T* 0 Tw (moment for example or ) Tj /F3 10 Tf (NPAR) Tj /F1 10 Tf (.) Tj T* ET
+BT 1 0 0 1 0 26 Tm .147808 Tw 12 TL /F1 10 Tf 0 0 0 rg (The rest of the lines just add the structures to the ) Tj /F3 10 Tf (JobFolder\(\)) Tj /F1 10 Tf ( object which is the instance that will launch) Tj T* 0 Tw 1.80989 Tw (the jobs. This is where you could set ) Tj /F3 10 Tf (INCAR) Tj /F1 10 Tf ( parameters that are structure-dependent like the magnetic) Tj T* 0 Tw (moment for example or ) Tj /F3 10 Tf (NPAR) Tj /F1 10 Tf (.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 590.4279 cm
+1 0 0 1 57.02362 435.0279 cm
 q
 BT 1 0 0 1 0 3 Tm 18 TL /F2 15 Tf .133333 .133333 .133333 rg (Launching jobs) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 560.4279 cm
+1 0 0 1 57.02362 405.0279 cm
 q
 BT 1 0 0 1 0 14 Tm .101147 Tw 12 TL /F1 10 Tf 0 0 0 rg (To launch all the jobs on Niagara you can simply uncomment that last line of ) Tj /F3 10 Tf (HT_relax_example.ipy) Tj /F1 10 Tf ( and) Tj T* 0 Tw (run:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 515.2279 cm
+1 0 0 1 57.02362 371.8279 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -960,25 +986,25 @@ q
 .662745 .662745 .662745 RG
 .5 w
 .941176 .972549 1 rg
-n -6 -6 480.0283 36 re B*
+n -6 -6 480.0283 24 re B*
 Q
 q
-.533333 .533333 .533333 rg
-BT 1 0 0 1 0 14 Tm /F3 10 Tf 12 TL (ipython HT_relax_example.ipy) Tj T*  T* ET
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (ipython HT_relax_example.ipy) Tj T* ET
 Q
 Q
 Q
 Q
 Q
 q
-1 0 0 1 57.02362 495.2279 cm
+1 0 0 1 57.02362 351.8279 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (But I like to do it manually in Ipython so I can make sure everything is ok) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 435.1203 cm
+1 0 0 1 57.02362 301.9375 cm
 q
 q
 .85143 0 0 .85143 0 0 cm
@@ -988,38 +1014,38 @@ q
 .662745 .662745 .662745 RG
 .5 w
 .941176 .972549 1 rg
-n -6 -6 564 60 re B*
+n -6 -6 564 48 re B*
 Q
 q
-.533333 .533333 .533333 rg
-BT 1 0 0 1 0 38 Tm /F3 10 Tf 12 TL (ipython) Tj T* (In [1]: %run HT_relax_example.ipy) Tj T* (In [2]: %launch scattered --account=rrg-ovoznyy --walltime=24:00:00 --ppn=40 --queue=compute) Tj T*  T* ET
+0 0 0 rg
+BT 1 0 0 1 0 26 Tm /F3 10 Tf 12 TL (ipython) Tj T* (In [1]: %run HT_relax_example.ipy) Tj T* (In [2]: %launch scattered --account=rrg-ovoznyy --walltime=24:00:00 --ppn=40 --queue=compute) Tj T* ET
 Q
 Q
 Q
 Q
 Q
 q
-1 0 0 1 57.02362 403.1203 cm
+1 0 0 1 57.02362 269.9375 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.136019 Tw (The launch command controls the account you are using the amount of time you are asking for and your) Tj T* 0 Tw (queue. If you jobs have already finished Pylada will detect it and they won\222t be relaunched.) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 373.1203 cm
+1 0 0 1 57.02362 239.9375 cm
 q
 BT 1 0 0 1 0 3 Tm 18 TL /F2 15 Tf .133333 .133333 .133333 rg (Extracting Data) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 343.1203 cm
+1 0 0 1 57.02362 209.9375 cm
 q
 0 0 0 rg
 BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .438917 Tw (Pylada makes it easy to extract a lot of information on the jobs once they are finished. To get information in) Tj T* 0 Tw (python or Ipython do:) Tj T* ET
 Q
 Q
 q
-1 0 0 1 57.02362 249.9203 cm
+1 0 0 1 57.02362 116.7375 cm
 q
 q
 1 0 0 1 0 0 cm
@@ -1032,49 +1058,7 @@ q
 n -6 -6 480.0283 84 re B*
 Q
 q
-.941176 .972549 1 rg
-n 0 60 36 12 re f*
-.941176 .972549 1 rg
-n 0 48 6 12 re f*
-.941176 .972549 1 rg
-n 6 48 6 12 re f*
-.941176 .972549 1 rg
-n 12 48 6 12 re f*
-.941176 .972549 1 rg
-n 18 48 270 12 re f*
-.941176 .972549 1 rg
-n 0 36 6 12 re f*
-.941176 .972549 1 rg
-n 6 36 6 12 re f*
-.941176 .972549 1 rg
-n 12 36 6 12 re f*
-.941176 .972549 1 rg
-n 18 36 252 12 re f*
-.941176 .972549 1 rg
-n 0 24 6 12 re f*
-.941176 .972549 1 rg
-n 6 24 6 12 re f*
-.941176 .972549 1 rg
-n 12 24 6 12 re f*
-.941176 .972549 1 rg
-n 18 24 342 12 re f*
-.941176 .972549 1 rg
-n 0 12 6 12 re f*
-.941176 .972549 1 rg
-n 6 12 6 12 re f*
-.941176 .972549 1 rg
-n 12 12 6 12 re f*
-.941176 .972549 1 rg
-n 18 12 288 12 re f*
-.941176 .972549 1 rg
-n 0 0 6 12 re f*
-.941176 .972549 1 rg
-n 6 0 6 12 re f*
-.941176 .972549 1 rg
-n 12 0 6 12 re f*
-.941176 .972549 1 rg
-n 18 0 78 12 re f*
-BT 1 0 0 1 0 62 Tm 12 TL /F3 10 Tf .533333 .533333 .533333 rg (python) Tj T* (>) Tj (>) Tj (>) Tj ( from pylada.vasp import Extract, MassExtract) Tj T* (>) Tj (>) Tj (>) Tj ( allresults = MassExtract\("output_folder"\)) Tj T* (>) Tj (>) Tj (>) Tj ( dir\(allresults\) # To get a list of availables quantities) Tj T* (>) Tj (>) Tj (>) Tj ( results = Extract\("output_folder/specific_run"\)) Tj T* (>) Tj (>) Tj (>) Tj ( dir\(results\)) Tj T* ET
+BT 1 0 0 1 0 62 Tm 12 TL /F3 10 Tf 0 0 0 rg (python) Tj T* (>) Tj (>) Tj (>) Tj ( from pylada.vasp import Extract, MassExtract) Tj T* (>) Tj (>) Tj (>) Tj ( allresults = MassExtract\("output_folder"\)) Tj T* (>) Tj (>) Tj (>) Tj ( dir\(allresults\) # To get a list of available quantities) Tj T* (>) Tj (>) Tj (>) Tj ( results = Extract\("output_folder/specific_run"\)) Tj T* (>) Tj (>) Tj (>) Tj ( dir\(results\)) Tj T* ET
 Q
 Q
 Q
@@ -1114,7 +1098,7 @@ xref
 0000000585 00000 n 
 0000000698 00000 n 
 0000000903 00000 n 
-0000001018 00000 n 
+0000001108 00000 n 
 0000001223 00000 n 
 0000001429 00000 n 
 0000001535 00000 n 
@@ -1126,20 +1110,20 @@ xref
 0000002432 00000 n 
 0000002570 00000 n 
 0000002708 00000 n 
-0000002849 00000 n 
-0000002978 00000 n 
-0000003095 00000 n 
-0000003168 00000 n 
-0000010402 00000 n 
-0000019305 00000 n 
-0000027580 00000 n 
-0000027639 00000 n 
-0000027673 00000 n 
-0000027707 00000 n 
+0000002850 00000 n 
+0000002979 00000 n 
+0000003096 00000 n 
+0000003169 00000 n 
+0000010642 00000 n 
+0000018581 00000 n 
+0000028025 00000 n 
+0000028084 00000 n 
+0000028118 00000 n 
+0000028152 00000 n 
 trailer
 <<
 /ID 
-[<8c200971427bf8cdb9f2d1ece4a2739d><8c200971427bf8cdb9f2d1ece4a2739d>]
+[<fc7aa3ad51a85289fe88d5617f11f095><fc7aa3ad51a85289fe88d5617f11f095>]
 % ReportLab generated PDF document -- digest (http://www.reportlab.com)
 
 /Info 12 0 R
@@ -1147,5 +1131,5 @@ trailer
 /Size 31
 >>
 startxref
-27741
+28186
 %%EOF

@@ -24,11 +24,11 @@ def closest_factor(n):
 
 ############### setting up the functional
 vasp=Relax()
-
-vasp.program = '/scinet/niagara/software/commercial/vasp-6.1.2/bin/vasp_ncl'
 vasp.has_nlep = False
 
+vasp.program = '/scinet/niagara/software/commercial/vasp-6.1.2/bin/vasp_ncl'
 pseudoDir = '/scinet/niagara/software/commercial/vasp-6.1.2/potpaw_PBE/'
+
 vasp.add_specie = "C", pseudoDir + "/C"
 vasp.add_specie = "H", pseudoDir + "/H"
 vasp.add_specie = "F", pseudoDir + "/F" # (F_s) No ultrasoft with spinorbit
@@ -81,7 +81,7 @@ from glob import iglob
 structures={}
 
 jobs = get_jobs()
-for poscar in iglob('dry_run_relaxed_poscars/POSCAR_*'):
+for poscar in iglob('POSCARs/POSCAR_*'):
   s=read.poscar(poscar)
   s.name=''
   outfolder = 'ene_all/'

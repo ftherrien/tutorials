@@ -8,57 +8,64 @@ Installation
 
 To install Pylada on Niagara (or any cc computer) do this
 
- .. code-block:: console
+.. code-block::
 
-    module load python cmake intel/2020u4
-    pip install --user --upgrade pip
-    pip install --user git+https://github.com/pylada/pylada-light
+   module load python cmake intel/2020u4
+   pip install --user --upgrade pip
+   pip install --user git+https://github.com/pylada/pylada-light@few_fixes
 
 I like to have it in a separate virtual environment:
 
- .. code-block:: console
+.. code-block::
 
-    module load python cmake intel/2020u4
-    python -m venv pylada_env
-    source pylada_env/bin/activate
-    pip install --upgrade pip
-    pip install git+https://github.com/pylada/pylada-light
+   module load python cmake intel/2020u4
+   python -m venv pylada_env
+   source pylada_env/bin/activate
+   pip install --upgrade pip
+   pip install git+https://github.com/pylada/pylada-light@few_fixes
 
-This should take a little while, because it needs to compile from source. After that you need to copy the file ``.pylada`` in your home directory (this file maybe hidden, but it is in this folder!). At line 20 of that file change my username for yours
+This should take a little while, because it needs to compile from source. Make sure that python is 3.9 or less. After that you need to copy the file ``.pylada`` in your home directory (this file may be hidden, but it is in this folder!). At line 20 of that file change my username for yours
 
- .. code-block:: python
+.. code-block:: python
 
-    jobs   = Popen(['squeue', '-u', 'your_user_name'], stdout=PIPE, encoding='utf-8').communicate()[0].split('\n')
+   jobs   = Popen(['squeue', '-u', 'your_user_name'], stdout=PIPE, encoding='utf-8').communicate()[0].split('\n')
 
-Lines 40-61 contain the slurm script that Pylada will use to launch jobs. Make sure to change L55-56 to the correct modules and environment that you are using if you are on a different computer.
+Lines 40-61 contain the slurm script that Pylada will use to launch jobs. Make sure to change L55-58 to the correct modules and environment that you are using if you are on a different computer.
 
- .. code-block:: bash
+.. code-block:: bash
+		 
+   ##################### PBSSCRIPT #####################
+   
+   pbs_string =  '''#!/bin/bash -x
+   #SBATCH --account={account}
+   #SBATCH --nodes={nnodes}
+   #SBATCH --ntasks-per-node={ppn}
+   #SBATCH --exclusive
+   #SBATCH --export=ALL
+   #SBATCH --time={walltime}
+   #SBATCH -o {out}
+   #SBATCH -e {err}
+   #SBATCH --job-name={name}
+   #SBATCH -p {queue} #<- You may need to remove this line
+   
+   # Go to the directoy from which our job was launched
+   cd {directory}
+
+   # source ~/.bashrc #<- You may need to add this line
+   module use /scinet/niagara/software/commercial/modules    #<-This line
+   module load intel/2020u4 intelmpi/2020u4 hdf5/1.10.7 vasp #<-This line
+   module load python cmake                                  #<-This line
+   source ~/pylada_env/bin/activate                          #<-This line
+   
+   {header}
+   python {scriptcommand}
+   {footer}
+   '''
     
-    ##################### PBSSCRIPT #####################
-    
-    pbs_string =  '''#!/bin/bash -x
-    #SBATCH --account={account}
-    #SBATCH --nodes={nnodes}
-    #SBATCH --ntasks-per-node={ppn}
-    #SBATCH --exclusive
-    #SBATCH --export=ALL
-    #SBATCH --time={walltime}
-    #SBATCH -o {out}
-    #SBATCH -e {err}
-    #SBATCH --job-name={name}
-    #SBATCH -p {queue}
-    
-    # Go to the directoy from which our job was launched
-    cd {directory}
-    
-    module load python cmake intel/2020u4 #This line
-    source ~/pylada_env/bin/activate #and this line
-    
-    {header}
-    python {scriptcommand}
-    {footer}
-    '''   
+.. note::
 
+   On some Compute Canada computers there are no partitions, you will need to remove line 35. You may also have to manually source ~/.bashrc
+    
 
 Usage
 =====
@@ -114,7 +121,7 @@ This is where you set the type of relaxation (ISIF) the options are ``static``, 
 
     vasp.relaxation = "volume ionic cellshape"
 
-Most INCAR parameters can be set directly e.g. ``NSW`` is ``vasp.nsw``. If you are using a less common parameters sometimes you need to *manually* add it using this command :
+Most INCAR parameters can be set directly e.g. ``NSW`` is ``vasp.nsw``. If you are using a less common parameter sometimes you need to *manually* add it using this command :
 
 .. code-block:: python
 
@@ -138,20 +145,20 @@ Lines 79-98 go through input files and add them to a list of structures. This is
         if name not in jobs: # Making sure it is not already running                                                                                              
             structures[name]=s
 
-The rest of the lines just add the structures to the ``JobFolder()`` object which is the instance that will launch the jobs. This is where you could set ``INCAR`` parameters that are structure dependent like the magnetic moment for example or ``NPAR``. 
+The rest of the lines just add the structures to the ``JobFolder()`` object which is the instance that will launch the jobs. This is where you could set ``INCAR`` parameters that are structure-dependent like the magnetic moment for example or ``NPAR``. 
 
 Launching jobs
 --------------
 
 To launch all the jobs on Niagara you can simply uncomment that last line of ``HT_relax_example.ipy`` and run:
 
-.. code-block:: console
+.. code-block::
 
     ipython HT_relax_example.ipy
 
 But I like to do it manually in Ipython so I can make sure everything is ok
 
-.. code-block:: console
+.. code-block::
 
     ipython
     In [1]: %run HT_relax_example.ipy
@@ -164,20 +171,12 @@ Extracting Data
 
 Pylada makes it easy to extract a lot of information on the jobs once they are finished. To get information in python or Ipython do:
 
-.. code-block:: console
+.. code-block::
 
     python
     >>> from pylada.vasp import Extract, MassExtract
     >>> allresults = MassExtract("output_folder")
-    >>> dir(allresults) # To get a list of availables quantities
+    >>> dir(allresults) # To get a list of available quantities
     >>> results = Extract("output_folder/specific_run")
     >>> dir(results)
-
-
-
-
-
-
-
-
 
