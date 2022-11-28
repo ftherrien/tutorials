@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p POSCARs
+
 for fname in $1/*.mol
 do
     echo $fname
