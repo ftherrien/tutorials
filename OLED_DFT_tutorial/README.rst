@@ -105,11 +105,12 @@ Once all calculations are finished, use the following to get a text file contain
 
 This will create a text file named ``results.txt`` with the following structure:
 
-+----------------+----------------+--------------+------------------------------------+-----------------------------------+------------------------------+-----------------------+
-| file name      | Energy Gap     | k\ :sub:`r`\ | Iridium Spin Orbit Coupling Energy |  Activation barrier (not relaxed) | Activation barrier (relaxed) | weakest bond strength | 
-+----------------+----------------+--------------+------------------------------------+-----------------------------------+------------------------------+-----------------------+
++-----------+------------+-------------------------+----------------------+----------------------------+-----------+-------------+
+| file name | Wavelength | PLQY unrelaxed barriers | PLQY relaxed barrier | PLQY fully relaxed barrier | Weak bond |  Not N bond |
++-----------+------------+-------------------------+----------------------+----------------------------+-----------+-------------+
+|           |            | Only if blue            | Only if blue         | Only if blue               | if weak   |  if not N   |
++-----------+------------+-------------------------+----------------------+----------------------------+-----------+-------------+
 
-To obtain wavelength
 
 .. math::
 
@@ -127,5 +128,11 @@ k\ :sub:`nr`\  is obtained with:
 
    k_{nr} = k_{nr}(T) + k_{ISC} = Ae^{-\frac{E_{rel}}{B k_B T}} + Ce^{-E_{gap}} = 10^7e^{-\frac{E_{rel}}{3 \times 0.02585}} + 10^5e^{-E_{gap}}
 
+
+"PLQY unrelaxed barriers" uses barriers found by manually stretching the bonds by sets amounts and stopping when the LUMO has high metal character. This is the original method.
+
+"PLQY relaxed barrier" takes the structure with the lowest barrier from the previous step and relaxes it while keeping all Ir bonds fixed.
+
+"PLQY relaxed barrier" starts from the previous step and keeps only the stertched bond fixed while relaxing all other bonds.
    
 Good luck!

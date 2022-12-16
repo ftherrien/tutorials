@@ -38,8 +38,10 @@ vasp.add_specie = "O", pseudoDir + "/O" # (O_s) No ultrasoft with spinorbit
 
 vasp.add_specie = "Cl", pseudoDir + "/Cl" # 
 vasp.add_specie = "Si", pseudoDir + "/Si" # 
-vasp.add_specie = "S", pseudoDir + "/S" # 
-vasp.add_specie = "B", pseudoDir + "/B" # 
+vasp.add_specie = "S", pseudoDir + "/S" #
+vasp.add_specie = "Sb", pseudoDir + "/Sb" # 
+vasp.add_specie = "B", pseudoDir + "/B" #
+vasp.add_specie = "Br", pseudoDir + "/Br" #
 vasp.add_specie = "P", pseudoDir + "/P" # 
 
 vasp.prec       = "accurate"
@@ -85,7 +87,7 @@ for poscar in iglob('POSCARs/POSCAR_*'):
   s=read.poscar(poscar)
   s.name=''
   outfolder = 'ene_all/'
-  name=outfolder+poscar.split('_')[-1]
+  name=outfolder+poscar.split('POSCAR_')[-1]
 
   if name not in jobs:
       print(poscar)

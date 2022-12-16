@@ -22,7 +22,6 @@ class CustomChain(object):
     def __call__(self, structure, outdir=None, **kwargs ):
 
         from copy import deepcopy
-        import sys
         from os import getcwd, makedirs
         from os.path import join, isdir, isfile
         from pylada.misc import RelativePath
@@ -30,8 +29,6 @@ class CustomChain(object):
         from pylada.vasp.extract import Extract
         from pylada.vasp import Vasp
         from pylada.vasp.relax import Relax
-        print(getcwd())
-        print(sys.path)
         from stretch import stretch
         from interp import interp
         from extract_images import read_procar
@@ -351,7 +348,7 @@ class CustomChain(object):
                 timing[self.names[4]] = time.time() - t
             
             pickle.dump(timing, open(outdir + "/timing.pkl","wb"))
-
+            
             ############ Part 5.2: Relax Barrier ###############
 
             print("BOND INDICES", bond_indices)
@@ -476,11 +473,14 @@ class CustomChain(object):
             calcdir = outdir + "/" + self.names[4] + "/SINGLE_BOND/%d"%i
             makedirs(calcdir, exist_ok = True)
             shutil.copyfile(old_calcdir+ "/POSCAR_final", calcdir + "/POSCAR_init")
+            
             A = read.poscar(calcdir + "/POSCAR_init")
+            initial_values = [np.linalg.norm(A[bi].pos - A[bj].pos) for bi, bj in bond_indices]
+            print("INITIAL VALUES:", initial_values)
 
             if not isfile(calcdir + "/POSCAR_final"):
 
-                if not isdir(calcdir + "/asedir"):
+                if not isfile(calcdir + "/asedir/POSCAR"):
                     atoms = aseread(calcdir + "/POSCAR_init")
                 else:
                     atoms = aseread(calcdir + "/asedir/POSCAR")
@@ -490,13 +490,10 @@ class CustomChain(object):
                 magmom = np.zeros(len(atoms))
                 magmom[0] = 0.6
                 
-                initial_values = [np.linalg.norm(A[bi].pos - A[bj].pos) for bi, bj in bond_indices]
-                
                 #cc=stretchcombo(initial_value, liste, atoms)
                 
                 cc=FixBondLength(bond_i, bond_j)
                 
-                print("INITIAL VALUES:", initial_values)
                 # print(cc.return_adjusted_prositions())
                 
                 # atoms.set_positions(cc.return_adjusted_prositions())
@@ -543,9 +540,7 @@ class CustomChain(object):
                 atoms.write(calcdir + "/POSCAR_final")
             
                 print("ENERGY:", atoms.get_potential_energy(), file = f)
-
-                print("CHANGE IN LENGTH:", (np.array(initial_values) - np.array(final_values))/np.array(initial_values), file=f)
-                
+            
             else:
                 asecalc = Extract(calcdir + "/asedir")
                 new_barriers.append(float(asecalc.total_energy)-ene_init)
@@ -553,6 +548,8 @@ class CustomChain(object):
             B = read.poscar(calcdir + "/POSCAR_final")
 
             final_values = [np.linalg.norm(B[bi].pos - B[bj].pos) for bi, bj in bond_indices]
+
+            print("CHANGE IN LENGTH:", (np.array(initial_values) - np.array(final_values))/np.array(initial_values), file=f)
 
             print("SINGLE BOND", barriers, file=f)
             if len(barriers) != 0:
@@ -567,7 +564,6 @@ class CustomChain(object):
                 
                 if minidx != new_minidx:
                     print("Not the same barrier!", file=f)
-            
             
             if "SINGLE_BOND" not in timing:
                 timing["SINGLE_BOND"] = time.time() - t
