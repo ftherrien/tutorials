@@ -87,7 +87,7 @@ def get_barrier_alt(mol):
     barrier = np.min(barriers)
 
     try:
-        old_barrier = get_barrier(mol)
+        old_barrier, bond_type = get_barrier(mol)
 
         if abs(barrier - old_barrier) > 1e-12:
             print("Barrier changed for %s from %f to %f"%(mol, old_barrier, barrier))
@@ -100,13 +100,13 @@ def get_barrier_alt(mol):
     print(ks)
     print(barriers)
 
-    return barrier, np.min(ks)
+    return barrier, np.min(ks), bond_type
 
 def get_barrier(mol):
     with open(mol + "/barrier/BARRIER") as f:
         s = f.read()
 
-    return float(re.findall("Min barrier:\s*([0-9\.\-]+)", s)[0])
+    return float(re.findall("Min barrier:\s*([0-9\.\-]+)", s)[0]), re.findall("Min barrier:\s*[0-9\.\-]+\s*(\w)", s)[0]
     # return np.mean([float(a) for a in re.findall("[0-9]+\s+([0-9\.\-]+)\s+eV", s)])
 
 def get_rel_barrier(mol):
@@ -181,11 +181,19 @@ with open(output_name,"w") as f:
         if not sp_rel_nup.success:
             print(mol, "SP_B3LYP_nup failed")
             continue
-        if not opt.success:
-            print(mol, "SOC_Optics_B3LYP failed")
+            
+        Ediff = float(nup2.total_energy-sp_rel_nup.total_energy)
+
+        if Ediff < 2.35:
+            print(mol, 1240/Ediff, file=f)
             continue
+
+        if not opt.success:
+            print(mol, 1240/Ediff, "NF", "NF", "NF", file=f)
+            continue
+
         if not os.path.isfile(mol + "/barrier/BARRIER"):
-            print(mol, "can't find BARRIER file")
+            print(mol, 1240/Ediff, "NF", "NF", "NF", file=f)
             continue
         # if not bar.success:
         #     print(mol, "barrier_B3LYP failed")
@@ -201,17 +209,18 @@ with open(output_name,"w") as f:
         # except IndexError:
         #     print(mol, "Could not find info in BARRIER file")
         try:
-            Ea, k = get_barrier_alt(mol)
+            Ea, k, bond_type = get_barrier_alt(mol)
             print("Found old barrier (alt)")
         except:
+            print(mol, 1240/Ediff, "NF", "NF", "NF", file=f)
             print(mol, "could not find old barrier")
             continue
 
-        # try:
-        #     nEa = get_rel_barrier(mol)
-        # except IndexError:
-        #     print(mol, "could not find NEW barrier")
-        #     nEa = -1
+        try:
+            nEa = get_rel_barrier(mol)
+        except IndexError:
+            print(mol, "could not find NEW barrier")
+            nEa = -1
 
         try:
             sbEa = get_1b_barrier(mol)
@@ -292,8 +301,6 @@ with open(output_name,"w") as f:
             M[2] =  1/2 * np.sum(np.abs(dldh - uluh)**2)
             E[2] =  0.5 * (E_dldh + E_uluh)
 
-            Ediff = float(nup2.total_energy-sp_rel_nup.total_energy)
-
         else:
             print(mol, "Odd number of electrons")
             for k in range(3):
@@ -331,7 +338,17 @@ with open(output_name,"w") as f:
         #print(Ediff, E, M, K, k_r, k_nr, "<======")
 
         print(mol, "->OK<-")
-        print(mol, Ediff, k_r, Esoc, Ea, sbEa, k, file=f)
+        #print(mol, Ediff, k_r, Esoc, Ea, sbEa, k, file=f)
+        k_r = k_r/15
+        knr_sb = 1e7*np.exp(-sbEa/3/0.02585) + np.exp(-Ediff)*1e5
+        knr_n = 1e7*np.exp(-nEa/3/0.02585) + np.exp(-Ediff)*1e5
+        knr = 6.251e12*np.exp(-Ea/2.4/0.02585) + np.exp(-Ediff)*1e5
 
+        print(mol, 1240/Ediff, 
+              k_r/(k_r+knr), k_r/(k_r+knr_n) if nEa != -1 else "NF", 
+              k_r/(k_r+knr_sb) if sbEa != -1 else "NF",
+              "" if k > 5 else "WEAK BOND",
+              "" if bond_type is "N" else "Not N bond",
+              file=f)
     
 pickle.dump(all_times, open(output_name + ".times","wb"))
