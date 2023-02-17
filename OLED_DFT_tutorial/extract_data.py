@@ -86,8 +86,9 @@ def get_barrier_alt(mol):
 
     barrier = np.min(barriers)
 
+    bond_type = "N"
     try:
-        old_barrier, bond_type = get_barrier(mol)
+        old_barrier, bond_type, rerelax, allB = get_barrier(mol)
 
         if abs(barrier - old_barrier) > 1e-12:
             print("Barrier changed for %s from %f to %f"%(mol, old_barrier, barrier))
@@ -100,13 +101,17 @@ def get_barrier_alt(mol):
     print(ks)
     print(barriers)
 
-    return barrier, np.min(ks), bond_type
+    return barrier, np.min(ks), bond_type, rerelax, allB
 
 def get_barrier(mol):
     with open(mol + "/barrier/BARRIER") as f:
         s = f.read()
 
-    return float(re.findall("Min barrier:\s*([0-9\.\-]+)", s)[0]), re.findall("Min barrier:\s*[0-9\.\-]+\s*(\w)", s)[0]
+    bond_types = re.findall("[0-9]\s+[0-9\.\-]+\s+([A-Z])\s*\n", s)
+
+    print("BOND TYPES:", bond_types)
+
+    return float(re.findall("Min barrier:\s*([0-9\.\-]+)", s)[0]), re.findall("Min barrier:\s*[0-9\.\-]+\s*(\w)", s)[0], re.search("Relaxing a new barrier!", s) is not None and "B" in bond_types, len(set(bond_types)) == 1 and bond_types[0] == "B"
     # return np.mean([float(a) for a in re.findall("[0-9]+\s+([0-9\.\-]+)\s+eV", s)])
 
 def get_rel_barrier(mol):
@@ -209,7 +214,7 @@ with open(output_name,"w") as f:
         # except IndexError:
         #     print(mol, "Could not find info in BARRIER file")
         try:
-            Ea, k, bond_type = get_barrier_alt(mol)
+            Ea, k, bond_type, rerelax, allB = get_barrier_alt(mol)
             print("Found old barrier (alt)")
         except:
             print(mol, 1240/Ediff, "NF", "NF", "NF", file=f)
@@ -349,6 +354,8 @@ with open(output_name,"w") as f:
               k_r/(k_r+knr_sb) if sbEa != -1 else "NF",
               "" if k > 5 else "WEAK BOND",
               "" if bond_type is "N" else "Not N bond",
+              "rerelaxed" if rerelax else "",
+              "All carbenes" if allB else "",
               file=f)
     
 pickle.dump(all_times, open(output_name + ".times","wb"))

@@ -49,11 +49,11 @@ class CustomChain(object):
         
         def is_carbene(idx, outdir):
             try:
-                entry = outdir.split("entry-")[1].split("-")[0].lower()
+                entry = outdir.split("entry-")[1].split("-")[0].upper()
             except IndexError:
-                entry = outdir.split("/")[-1].lower()
+                entry = outdir.split("/")[-1]
             
-            mol = Chem.MolFromMolFile("./mols/"+entry+".mol", sanitize = False, removeHs = False)
+            mol = Chem.MolFromMolFile("./dry_run_mols/" + entry + ".mol", sanitize = False, removeHs = False)
             
             # atom = mol.GetAtomWithIdx(idx)
 
@@ -335,13 +335,19 @@ class CustomChain(object):
 
             if len(barriers) == 0:
                 print("No MC found", file=f)
+                return self.Extract(fulldir)
             else:
                 print("Barriers (eV)", file=f)
                 for i,b in enumerate(barriers):
                     print(i, b, bond_types[i], file=f)
                     
                 print(file=f)
-                minidx = np.argmin(barriers)
+                N_barriers_idx = [i for i,b in enumerate(bond_types) if b == "N"]
+                if len(N_barriers_idx) > 0:
+                    minidx = N_barriers_idx[np.argmin(np.array(barriers)[N_barriers_idx])]
+                else:
+                    minidx = np.argmin(barriers)
+                    print("All not N", file=f)
                 print("Min barrier:", barriers[minidx], bond_types[minidx], file=f)
 
             if self.names[4] not in timing:
@@ -350,6 +356,8 @@ class CustomChain(object):
             pickle.dump(timing, open(outdir + "/timing.pkl","wb"))
             
             ############ Part 5.2: Relax Barrier ###############
+
+        with open(outdir + "/" + self.names[4] + "/BARRIER", "a") as f:
 
             print("BOND INDICES", bond_indices)
 
@@ -451,10 +459,10 @@ class CustomChain(object):
                     
                 print(file=f)
                 new_minidx = np.argmin(new_barriers)
-                print("New Min barrier:", new_barriers[new_minidx], file=f)
+                print("New Min barrier:", new_barriers[new_minidx], file=f, flush=True)
                 
                 if minidx != new_minidx:
-                    print("Not the same barrier!", file=f)
+                    print("Not the same barrier!", file=f, flush=True)
             
             
             if "ARPESS" not in timing:
@@ -462,7 +470,9 @@ class CustomChain(object):
             
             pickle.dump(timing, open(outdir + "/timing.pkl","wb"))
 
-           ############ Part 5.3: Relax Barrier 1 bond only ###############
+        ############ Part 5.3: Relax Barrier 1 bond only ###############
+
+        with open(outdir + "/" + self.names[4] + "/BARRIER", "a") as f:
 
             print("More RELAXATION", bond_indices)
 
